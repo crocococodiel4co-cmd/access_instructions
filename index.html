@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Доступы для HDR Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: тот же язык, что у хаба брифов OBM — тёмный фон со световыми пятнами, hero с radar ping, сетка стеклянных карточек */
+:root{
+  --black-1:#050308; --black-3:#0a0f16; --panel:#0d141c; --panel-2:#0f1720;
+  --border:rgba(255,255,255,.09); --border-hover:rgba(223,234,232,.32);
+  --text-0:#f3f6f5; --text-1:rgba(243,246,245,.66); --text-2:rgba(243,246,245,.40); --text-3:rgba(243,246,245,.24);
+  --platinum:#dfeae8; --radius:20px;
+  --f:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--black-1);color:var(--text-0);font-family:var(--f);font-weight:300;line-height:1.5;position:relative;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;background:
+  radial-gradient(ellipse 60% 40% at 50% 0%,rgba(120,165,255,.16),transparent 60%),
+  radial-gradient(ellipse 45% 35% at 85% 25%,rgba(184,217,199,.08),transparent 65%),
+  radial-gradient(ellipse 55% 45% at 10% 85%,rgba(120,150,255,.07),transparent 65%),
+  linear-gradient(180deg,var(--black-1) 0%,var(--black-3) 55%,#070a10 100%)}
+.bg::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 120% 90% at 50% 40%,transparent 40%,rgba(0,0,0,.55) 100%)}
+.wrap{position:relative;z-index:1}
+
+header.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:28px 24px 0}
+.brand-left{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-1);font-weight:500}
+.brand-right{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-2);font-weight:500;display:flex;align-items:center;gap:8px}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--platinum);box-shadow:0 0 8px 1px rgba(223,234,232,.7)}
+
+.hero{max-width:820px;margin:0 auto;padding:96px 24px 56px;text-align:center;display:flex;flex-direction:column;align-items:center}
+.ping{position:relative;width:14px;height:14px;margin-bottom:34px}
+.ping i{position:absolute;inset:0;border-radius:50%;background:var(--platinum);box-shadow:0 0 18px 3px rgba(223,234,232,.55)}
+.ping .ring{position:absolute;top:50%;left:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;border:1px solid rgba(223,234,232,.55);opacity:0}
+.eyebrow{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--text-2);font-weight:500}
+h1{margin-top:22px;font-size:clamp(34px,6vw,58px);font-weight:200;letter-spacing:-.01em;line-height:1.14;text-wrap:balance}
+h1 b{font-weight:600;color:var(--platinum)}
+.lead{margin-top:22px;max-width:560px;font-size:16px;color:var(--text-1)}
+.facts{margin-top:26px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;list-style:none;font-size:14px;color:var(--text-1)}
+.facts li{display:flex;align-items:center;gap:8px}
+.facts li::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--platinum);box-shadow:0 0 6px rgba(223,234,232,.7)}
+.login{margin-top:30px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:14px;padding:10px 10px 10px 18px}
+.login span{font-size:13px;color:var(--text-2)}
+.login code{font-family:var(--f-mono);font-size:15px;font-weight:600;color:var(--platinum);user-select:all}
+.btn{font:500 13px var(--f);letter-spacing:.02em;color:var(--text-0);background:rgba(223,234,232,.08);border:1px solid var(--border);border-radius:10px;padding:8px 14px;cursor:pointer;transition:border-color .3s,background .3s}
+.btn:hover{border-color:var(--border-hover);background:rgba(223,234,232,.14)}
+.btn:focus-visible,.card:focus-visible{outline:2px solid var(--platinum);outline-offset:3px}
+
+section.cards{max-width:1180px;margin:0 auto;padding:20px 24px 120px}
+.section-head{text-align:center;margin-bottom:44px}
+.section-head h2{margin-top:14px;font-size:22px;font-weight:300;color:var(--text-1)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:860px){.grid{grid-template-columns:1fr}}
+
+.card{--mx:50%;--my:0%;position:relative;display:flex;flex-direction:column;text-decoration:none;color:inherit;background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--border);border-radius:var(--radius);padding:32px 26px 28px;overflow:hidden;isolation:isolate;transition:transform 420ms cubic-bezier(.2,.7,.2,1),border-color 420ms ease,box-shadow 420ms ease}
+.card::before{content:"";position:absolute;inset:-40%;z-index:-1;background:radial-gradient(circle at var(--mx) var(--my),rgba(150,190,255,.30),transparent 45%);opacity:0;transition:opacity 420ms ease}
+.card::after{content:"";position:absolute;top:0;left:24px;right:24px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);opacity:0;transition:opacity 420ms ease}
+.card:hover{transform:translateY(-6px);border-color:var(--border-hover);box-shadow:0 24px 60px -20px rgba(0,0,0,.6)}
+.card:hover::before,.card:hover::after{opacity:1}
+.icon{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:12px;margin-bottom:26px;color:var(--platinum);background:rgba(255,255,255,.02)}
+.icon svg{width:20px;height:20px}
+.card h3{font-size:24px;font-weight:600;color:var(--text-0);letter-spacing:-.01em;line-height:1.15;margin-bottom:10px}
+.card p{font-size:14px;color:var(--text-1);line-height:1.35;margin-bottom:8px}
+.card .meta{font-family:var(--f-mono);font-size:11px;letter-spacing:.04em;color:var(--text-2);margin-bottom:26px}
+.cta{margin-top:auto;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--text-1);letter-spacing:.02em;transition:color 300ms ease,gap 300ms ease}
+.cta svg{width:14px;height:14px;transition:transform 300ms cubic-bezier(.2,.7,.2,1)}
+.card:hover .cta{color:var(--platinum);gap:12px}
+.card:hover .cta svg{transform:translateX(3px)}
+.tag{position:absolute;top:26px;right:26px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-3)}
+
+footer{max-width:1180px;margin:0 auto;padding:30px 24px 40px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);font-size:12px;color:var(--text-3);flex-wrap:wrap;gap:10px}
+
+@media (prefers-reduced-motion:no-preference){
+  .bg{animation:drift 22s ease-in-out infinite alternate}
+  .dot{animation:blink 2.6s ease-in-out infinite}
+  .ping .ring{animation:ping 3.2s cubic-bezier(.2,.6,.4,1) infinite}
+  .ping .ring:nth-child(2){animation-delay:1.06s}
+  .ping .ring:nth-child(3){animation-delay:2.13s}
+}
+@keyframes drift{0%{filter:brightness(1)}100%{filter:brightness(1.12)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes ping{0%{transform:scale(1);opacity:.9}100%{transform:scale(9.5);opacity:0}}
+@media (max-width:480px){
+  header.topbar{padding:20px 18px 0}
+  .brand-left,.brand-right{font-size:10.5px;letter-spacing:.14em;white-space:nowrap}
+  .brand-right .long{display:none}
+  .hero{padding:64px 18px 36px}
+  section.cards{padding:10px 18px 90px}
+  footer{padding:24px 18px 30px}
+}
+</style>
+</head>
+<body>
+
+
+<div class="bg"></div>
+
+<div class="wrap">
+  <header class="topbar">
+    <div class="brand-left">HDR GROUP</div>
+    <div class="brand-right"><span class="dot"></span>Доступы<span class="long"> · Инструкции для клиентов</span></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="ping"><div class="ring"></div><div class="ring"></div><div class="ring"></div><i></i></div>
+      <div class="eyebrow">Доступ к площадкам</div>
+      <h1>Как выдать нам доступ <br><b>к вашим площадкам</b></h1>
+      <p class="lead">Пошаговые инструкции для клиентов HDR Group: куда нажать, чтобы дать нам доступ к рекламному кабинету или карточке компании. В каждой есть схемы экранов, шаги для компьютера и телефона и ответы на частые проблемы.</p>
+      <ul class="facts">
+        <li>Пароли передавать не нужно</li>
+        <li>Права владельца остаются у вас</li>
+        <li>Доступ можно отключить в любой момент</li>
+      </ul>
+      <div class="login"><span>Наш логин</span><code id="login">hdrgroup2026</code><button class="btn" id="copy" type="button">Скопировать</button></div>
+    </section>
+
+    <section class="cards" aria-labelledby="h-list">
+      <div class="section-head">
+        <div class="eyebrow">Выберите площадку</div>
+        <h2 id="h-list">Три площадки — одна логика доступа</h2>
+      </div>
+
+      <div class="grid">
+        <a class="card" href="direct.html" data-card>
+          <span class="tag">01</span>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4a1 1 0 0 0 1 1h2l5 4V5L7 9H5a1 1 0 0 0-1 1z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg></div>
+          <h3>Яндекс Директ</h3>
+          <p>Доступ к рекламному кабинету через управляющий аккаунт.</p>
+          <div class="meta">5 шагов · компьютер и телефон</div>
+          <div class="cta">Открыть инструкцию <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        </a>
+
+        <a class="card" href="yandex-business.html" data-card>
+          <span class="tag">02</span>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg></div>
+          <h3>Яндекс Бизнес</h3>
+          <p>Доступ к карточке компании на Яндекс Картах через роль «Представитель».</p>
+          <div class="meta">6 шагов · компьютер и телефон</div>
+          <div class="cta">Открыть инструкцию <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        </a>
+
+        <a class="card" href="2gis.html" data-card>
+          <span class="tag">03</span>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/><path d="M3 20h18"/></svg></div>
+          <h3>2ГИС</h3>
+          <p>Доступ к личному кабинету 2ГИС через приглашение на нашу почту.</p>
+          <div class="meta">5 шагов · компьютер и телефон</div>
+          <div class="cta">Открыть инструкцию <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>© 2026 HDR Group</div>
+    <div>Не получается? Пришлите скриншот вашему менеджеру</div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll('[data-card]').forEach(function(card){
+    card.addEventListener('mousemove',function(e){
+      var r=card.getBoundingClientRect();
+      card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
+      card.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
+    });
+  });
+  var b=document.getElementById('copy'),c=document.getElementById('login');
+  b.addEventListener('click',function(){
+    function sel(){var r=document.createRange();r.selectNodeContents(c);var x=getSelection();x.removeAllRanges();x.addRange(r);b.textContent='Выделено';}
+    try{navigator.clipboard.writeText('hdrgroup2026').then(function(){b.textContent='Скопировано';setTimeout(function(){b.textContent='Скопировать'},1800)},sel);}catch(e){sel();}
+  });
+})();
+</script>
+
+</body>
+</html>
