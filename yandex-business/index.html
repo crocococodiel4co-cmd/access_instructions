@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Доступ к Яндекс Директу</title>
+<title>Доступ к Яндекс Бизнесу</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">
 <style>
@@ -127,6 +127,33 @@ footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--line);color:v
 .back{display:inline-flex;align-items:center;gap:8px;font-weight:500;font-size:13px;letter-spacing:.04em;color:var(--muted);text-decoration:none;width:fit-content}
 .back:hover{color:var(--accent)}
 </style>
+<style>
+/* Дополнения для схем кабинета Яндекс Бизнеса: левое меню + форма доступа */
+.biz{display:grid;grid-template-columns:150px minmax(0,1fr);min-height:220px}
+.side{border-right:1px solid var(--line);padding:10px 8px;display:grid;align-content:start;gap:2px;background:var(--ui-bar)}
+.side .co{font-weight:800;color:var(--ink);padding:4px 8px 8px;font-size:12px;border-bottom:1px solid var(--line);margin-bottom:4px}
+.side div{padding:5px 8px;border-radius:6px;color:var(--muted);font-size:12px}
+.side div.hl{background:var(--surface);font-weight:700;position:relative;outline-offset:-2px}
+.main{padding:12px;display:grid;gap:10px;align-content:start;min-width:0}
+.main h4{margin:0;font-size:14px;color:var(--ink)}
+.select{border:1px solid var(--line);border-radius:6px;padding:7px 10px;color:var(--ink);display:flex;justify-content:space-between;gap:8px}
+.user{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+.ava{width:28px;height:28px;border-radius:50%;background:var(--accent-soft);display:grid;place-items:center;font-weight:800;font-size:11px;color:var(--accent);flex:none}
+.user .who{display:grid;min-width:0}
+.user .who b{color:var(--ink);font-size:12px}
+.user .who span{font-size:11px;color:var(--muted)}
+.user .icons{margin-left:auto;display:flex;gap:6px;color:var(--muted);font-weight:700}
+.cards{display:grid;gap:8px}
+.acc{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.acard{border:1px solid var(--line);border-radius:12px;padding:12px;display:grid;justify-items:center;align-content:start;gap:2px;text-align:center;color:var(--muted);font-size:12px;background:var(--surface)}
+.acard b{color:var(--ink);font-size:13px;margin-top:6px}
+.acard .lnk{color:var(--accent);text-decoration:underline dashed;text-underline-offset:3px}
+.acard.form{justify-items:stretch;gap:8px;text-align:left;box-shadow:0 6px 18px rgba(0,0,0,.08)}
+.ava.big{width:44px;height:44px;font-size:13px}
+.cocard{display:flex;justify-content:space-between;gap:8px;align-items:center;border:1px solid var(--line);border-radius:8px;padding:8px 10px;color:var(--muted)}
+.cocard b{color:var(--ink)}
+@media (max-width:560px){.biz{grid-template-columns:1fr}.side{border-right:0;border-bottom:1px solid var(--line);grid-auto-flow:column;overflow-x:auto;align-items:center}.side .co{display:none}}
+</style>
 </head>
 <body>
 
@@ -136,8 +163,8 @@ footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--line);color:v
 <header class="top">
   <a class="back" href="index.html">← Все инструкции</a>
   <div class="brand"><i></i>HDR GROUP</div>
-  <h1>Как выдать нам доступ к рекламному кабинету Яндекс Директа</h1>
-  <p class="lead">Вы добавляете наш логин как «управляющий аккаунт». Пароль передавать не нужно, деньги на счёте остаются под вашим контролем, а доступ можно отключить в любой момент.</p>
+  <h1>Как выдать нам доступ к вашей компании в Яндекс Бизнесе</h1>
+  <p class="lead">Вы добавляете наш логин представителем компании. Так мы сможем вести карточку на Яндекс Картах: обновлять информацию, фото, публикации и отвечать на отзывы. Пароль передавать не нужно, роль владельца остаётся у вас.</p>
 
   <div class="login" aria-label="Наш логин">
     <span class="lbl">Наш логин для добавления</span>
@@ -150,12 +177,12 @@ footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--line);color:v
 <section aria-labelledby="h-know">
   <h2 id="h-know">Что важно знать до начала</h2>
   <div class="facts">
-    <div class="fact"><b>Пароль не нужен</b><span>Мы входим под своим логином и видим ваш кабинет в списке доступных.</span></div>
-    <div class="fact"><b>Деньги остаются у вас</b><span>Управляющий аккаунт не может пополнять счёт и распоряжаться бюджетом.</span></div>
-    <div class="fact"><b>Отключить можно в 1 клик</b><span>В том же разделе, где вы выдаёте доступ.</span></div>
-    <div class="fact"><b>Нужен правильный логин</b><span>Входите под тем логином, на котором заведён рекламный кабинет: владельца или главного представителя.</span></div>
+    <div class="fact"><b>Пароль не нужен</b><span>Мы входим под своим логином и видим вашу компанию в своём кабинете.</span></div>
+    <div class="fact"><b>Владелец остаётся один — вы</b><span>Агентству можно выдать только роль «Представитель». Удалить владельца представитель не может.</span></div>
+    <div class="fact"><b>Выдать доступ может только владелец</b><span>Раздел «Доступы» виден только владельцу компании. Входите под логином, на который подтверждены права.</span></div>
+    <div class="fact"><b>Отключить можно в любой момент</b><span>В том же разделе «Доступы».</span></div>
   </div>
-  <div class="note warn"><b>В мобильном приложении «Яндекс Директ» этого сделать нельзя</b>Там нет раздела для выдачи доступа. Используйте компьютер или браузер на телефоне в режиме полной версии сайта.</div>
+  <div class="note warn"><b>Не видите раздел «Доступы»?</b>Значит, вы вошли не под логином владельца или права на компанию ещё не подтверждены. Об этом подробнее в конце страницы.</div>
 </section>
 
 <section aria-labelledby="h-how">
@@ -169,76 +196,96 @@ footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--line);color:v
   <div id="p-pc" role="tabpanel" aria-labelledby="t-pc">
   <ol class="steps">
     <li><div class="step">
-      <h3>Откройте Директ и войдите в кабинет</h3>
-      <p>Перейдите на <b>direct.yandex.ru</b> и войдите под логином, на котором работает ваша реклама. Проверьте логин в правом верхнем углу: если там личная почта, а реклама заведена на другой логин, выйдите и войдите заново.</p>
+      <h3>Откройте список ваших организаций</h3>
+      <p>Перейдите на <b>yandex.ru/sprav/companies</b> и войдите под логином владельца компании. Откроется раздел <span class="ui">Организации</span> со списком компаний, которыми вы управляете.</p>
       <div class="shot">
-        <div class="chrome"><div class="dots"><i></i><i></i><i></i></div><div class="url">direct.yandex.ru/dna/grid/campaigns</div></div>
+        <div class="chrome"><div class="dots"><i></i><i></i><i></i></div><div class="url">yandex.ru/sprav/companies</div></div>
         <div class="screen">
-          <div class="nav"><span>Кампании</span><span>Статистика</span><span>Инструменты</span><span>Оплата</span><span class="me hl">ваш-логин<span class="pin">1</span></span></div>
-          <div class="block dim"><div class="bh">Кампании</div><div class="row"><span>Поиск · Москва</span><span>Идут показы</span></div><div class="row"><span>РСЯ · Ретаргетинг</span><span>Остановлена</span></div></div>
-        </div>
-        <div class="cap">Схема экрана. Справа вверху отображается логин, под которым вы вошли.</div>
-      </div>
-    </div></li>
-
-    <li><div class="step">
-      <h3>Откройте раздел «Ваши представители»</h3>
-      <p>В верхнем меню нажмите <span class="ui">Инструменты</span>, затем выберите <span class="ui">Ваши представители</span>.</p>
-      <div class="shot">
-        <div class="chrome"><div class="dots"><i></i><i></i><i></i></div><div class="url">direct.yandex.ru</div></div>
-        <div class="screen">
-          <div class="nav"><span>Кампании</span><span>Статистика</span><span class="hl">Инструменты<span class="pin">1</span></span><span>Оплата</span><span class="me">ваш-логин</span></div>
-          <div class="menu">
-            <div>Прогноз бюджета</div>
-            <div>Подбор слов</div>
-            <div>Минус-фразы</div>
-            <div class="hl" style="position:relative">Ваши представители<span class="pin">2</span></div>
-            <div>Мои уведомления</div>
+          <div class="nav"><span style="color:var(--ink)">Организации</span><span>Реклама</span><span class="me hl">ваш-логин<span class="pin">1</span></span></div>
+          <div class="cards">
+            <div class="cocard hl" style="position:relative"><span><b>Ваша компания</b><br>ул. Примерная, 10</span><span>Владелец</span><span class="pin">2</span></div>
+            <div class="cocard dim"><span><b>Другая организация</b><br>пр. Образцовый, 5</span><span>Представитель</span></div>
           </div>
         </div>
-        <div class="cap">Схема экрана. Состав пунктов меню может немного отличаться.</div>
+        <div class="cap">Схема экрана. Напротив нужной компании должна стоять роль «Владелец».</div>
       </div>
-      <p class="hint">Не нашли пункт? Интерфейс Директа иногда меняется. Попробуйте нажать на логин в правом верхнем углу: раздел «Представители» бывает и там.</p>
     </div></li>
 
     <li><div class="step">
-      <h3>Нажмите «Добавить управляющий аккаунт»</h3>
-      <p>На странице два блока. Нам нужен нижний, <b>«Управляющие аккаунты»</b>. Блок «Представители» не трогайте: он для сотрудников с отдельным чистым логином.</p>
+      <h3>Выберите компанию, сеть или филиал</h3>
+      <p>Нажмите на нужную компанию. Если у вас <b>сеть филиалов</b>, выберите сеть целиком: тогда доступ будет сразу ко всем точкам, и не придётся добавлять нас в каждый филиал отдельно.</p>
+    </div></li>
+
+    <li><div class="step">
+      <h3>Откройте раздел «Доступы» в левом меню</h3>
+      <p>Слева находится меню компании: Главная, О компании, Конкуренты, Продвижение, Статистика, Форма заявки, Сайт, Доступы. Нажмите последний пункт, <span class="ui">Доступы</span>.</p>
       <div class="shot">
-        <div class="chrome"><div class="dots"><i></i><i></i><i></i></div><div class="url">direct.yandex.ru/…/representatives</div></div>
-        <div class="screen">
-          <div class="block dim"><div class="bh">Представители <span class="gbtn">Добавить представителя</span></div><div class="row"><span>ваш-логин</span><span>Главный представитель</span></div></div>
-          <div class="block"><div class="bh">Управляющие аккаунты <span class="ybtn hl">Добавить управляющий аккаунт<span class="pin">1</span></span></div><div class="row"><span>Пока нет управляющих аккаунтов</span><span></span></div></div>
+        <div class="chrome"><div class="dots"><i></i><i></i><i></i></div><div class="url">yandex.ru/sprav/…/edit</div></div>
+        <div class="biz">
+          <div class="side">
+            <div class="co">Ваша компания</div>
+            <div>Главная</div><div>О компании</div><div>Конкуренты</div><div>Продвижение</div><div>Статистика</div><div>Форма заявки</div><div>Сайт</div>
+            <div class="hl">Доступы<span class="pin">1</span></div>
+          </div>
+          <div class="main dim">
+            <h4>Главная</h4>
+            <div class="field">Профиль компании</div><div class="field">Последние отзывы</div>
+          </div>
         </div>
-        <div class="cap">Схема экрана. Кнопка находится в блоке «Управляющие аккаунты».</div>
+        <div class="cap">Схема экрана. «Доступы» — последний пункт левого меню.</div>
       </div>
     </div></li>
 
     <li><div class="step">
-      <h3>Введите наш логин и выберите «Редактирование»</h3>
-      <p>В поле логина вставьте <b>hdrgroup2026</b>. Уровень доступа выберите <b>«Редактирование»</b>: так мы сможем настраивать кампании и смотреть статистику, но не сможем управлять вашими представителями. Нажмите <span class="ui">Добавить</span>.</p>
+      <h3>Введите наш логин и выберите «Представитель»</h3>
+      <p>Справа от вашей карточки владельца есть форма. В поле <span class="ui">Логин</span> вставьте <b>hdrgroup2026</b>. В типе доступа выберите <b>«Представитель»</b> и нажмите <span class="ui">Добавить</span>.</p>
+      <div class="shot">
+        <div class="biz">
+          <div class="side">
+            <div class="co">Ваша компания</div>
+            <div>Статистика</div><div>Форма заявки</div><div>Сайт</div><div class="hl" style="outline:none">Доступы</div>
+          </div>
+          <div class="main">
+            <h4>Доступы</h4>
+            <div class="acc">
+              <div class="acard dim"><span class="ava big">ВЫ</span><b>Ваше имя</b><span class="lnk">ваш-логин</span><span>Владелец</span></div>
+              <div class="acard form">
+                <div class="field hl" style="position:relative">hdrgroup2026<span class="pin">1</span></div>
+                <div class="select hl" style="position:relative"><span>Представитель</span><span>⌄</span><span class="pin">2</span></div>
+                <span class="ybtn hl" style="position:relative;text-align:center;margin-top:auto">Добавить<span class="pin">3</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cap">Схема раздела «Доступы»: слева карточка владельца, справа форма добавления.</div>
+      </div>
+      <p class="hint">Роль «Представитель» позволяет редактировать информацию о компании, добавлять фото, размещать публикации и отвечать на отзывы. Права владельца остаются только у вас.</p>
+    </div></li>
+
+    <li><div class="step">
+      <h3>Подтвердите добавление, если Яндекс попросит</h3>
+      <p>Иногда после нажатия «Добавить» появляется окно подтверждения. Нажмите в нём кнопку подтверждения. Если окна нет, переходите к следующему шагу.</p>
       <div class="shot">
         <div class="screen">
           <div class="modal">
-            <b>Добавить управляющий аккаунт</b>
-            <div class="field hl" style="position:relative">hdrgroup2026<span class="pin">1</span></div>
-            <div class="radio"><i></i>Администрирование</div>
-            <div class="radio on hl" style="position:relative;width:fit-content;padding-right:10px"><i></i>Редактирование<span class="pin">2</span></div>
-            <div class="radio"><i></i>Чтение</div>
-            <div class="actions"><span class="ybtn hl" style="position:relative">Добавить<span class="pin">3</span></span><span class="gbtn">Отмена</span></div>
+            <b>Добавить представителя?</b>
+            <span style="color:var(--muted)">Пользователь hdrgroup2026 получит доступ к управлению компанией.</span>
+            <div class="actions"><span class="ybtn hl" style="position:relative">Подтвердить<span class="pin">1</span></span><span class="gbtn">Отмена</span></div>
           </div>
         </div>
-        <div class="cap">Схема окна добавления.</div>
+        <div class="cap">Схема окна подтверждения.</div>
       </div>
-      <p class="hint">Уровни доступа: «Администрирование» даёт ещё и управление представителями, «Чтение» позволяет только смотреть. Для ведения рекламы достаточно «Редактирования».</p>
     </div></li>
 
     <li><div class="step">
-      <h3>Напишите нам «Готово»</h3>
-      <p>Нам придёт приглашение, мы примем его со своей стороны. В блоке «Управляющие аккаунты» у вас появится строка с логином <b>hdrgroup2026</b>.</p>
+      <h3>Проверьте список и напишите нам «Готово»</h3>
+      <p>В разделе «Доступы» рядом с вашей карточкой появится карточка с логином <b>hdrgroup2026</b> и ролью «Представитель». Напишите менеджеру, что доступ выдан.</p>
       <div class="shot">
         <div class="screen">
-          <div class="block"><div class="bh">Управляющие аккаунты <span class="gbtn">Добавить управляющий аккаунт</span></div><div class="row hl" style="position:relative"><span style="color:var(--ink);font-weight:700">hdrgroup2026</span><span>Редактирование · ⋯</span><span class="pin">✓</span></div></div>
+          <div class="acc">
+            <div class="acard"><span class="ava big">ВЫ</span><b>Ваше имя</b><span class="lnk">ваш-логин</span><span>Владелец</span></div>
+            <div class="acard hl" style="position:relative"><span class="ava big">HDR</span><b>HDR Group</b><span class="lnk">hdrgroup2026</span><span>Представитель</span><span class="pin">✓</span></div>
+          </div>
         </div>
         <div class="cap">Так выглядит выданный доступ.</div>
       </div>
@@ -250,27 +297,27 @@ footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--line);color:v
   <div id="p-ph" role="tabpanel" aria-labelledby="t-ph" hidden>
   <ol class="steps">
     <li><div class="step">
-      <h3>Откройте браузер, а не приложение Директа</h3>
-      <p>Запустите Chrome, Яндекс Браузер или Safari. Наберите в адресной строке вручную: <b>direct.yandex.ru</b>. Если телефон сам открывает приложение Директа, закройте его и снова введите адрес в браузере.</p>
-      <p class="hint">На Android можно зажать ссылку и выбрать «Открыть в браузере».</p>
+      <h3>Откройте сайт в браузере</h3>
+      <p>Запустите Chrome, Яндекс Браузер или Safari и наберите вручную: <b>yandex.ru/sprav/companies</b>. Войдите под логином владельца компании.</p>
+      <p class="hint">Если телефон перебрасывает в приложение и там нет раздела «Доступы», вернитесь в браузер и введите адрес снова.</p>
     </div></li>
 
     <li><div class="step">
-      <h3>Войдите и включите полную версию сайта</h3>
-      <p>Войдите под логином рекламного кабинета. Затем включите режим «Версия для ПК»: без него нужный раздел на телефоне не появится.</p>
+      <h3>Включите полную версию сайта</h3>
+      <p>Левое меню с разделом «Доступы» удобнее всего открывать в режиме «Версия для ПК».</p>
       <div class="phones">
         <div class="phone" aria-label="Chrome на Android">
-          <div class="pbar"><div class="purl">direct.yandex.ru</div><span class="ico hl">⋮<span class="pin">1</span></span></div>
+          <div class="pbar"><div class="purl">yandex.ru/sprav</div><span class="ico hl">⋮<span class="pin">1</span></span></div>
           <div class="ptitle">Chrome, Android</div>
           <div class="pmenu"><div>Новая вкладка</div><div>История</div><div>Найти на странице</div><div class="hl" style="position:relative">Версия для ПК <span class="chk"></span><span class="pin">2</span></div><div>Настройки</div></div>
         </div>
         <div class="phone" aria-label="Safari на iPhone">
-          <div class="pbar"><span class="ico hl">аА<span class="pin">1</span></span><div class="purl">direct.yandex.ru</div></div>
+          <div class="pbar"><span class="ico hl">аА<span class="pin">1</span></span><div class="purl">yandex.ru/sprav</div></div>
           <div class="ptitle">Safari, iPhone</div>
           <div class="pmenu"><div>Увеличить текст</div><div>Скрыть панель</div><div class="hl" style="position:relative">Запросить настольный веб-сайт<span class="pin">2</span></div><div>Настройки веб-сайта</div></div>
         </div>
         <div class="phone" aria-label="Яндекс Браузер">
-          <div class="pbar"><div class="purl">direct.yandex.ru</div><span class="ico hl">≡<span class="pin">1</span></span></div>
+          <div class="pbar"><div class="purl">yandex.ru/sprav</div><span class="ico hl">≡<span class="pin">1</span></span></div>
           <div class="ptitle">Яндекс Браузер</div>
           <div class="pmenu"><div>Новая вкладка</div><div>Закладки</div><div class="hl" style="position:relative">Версия для ПК <span class="chk"></span><span class="pin">2</span></div><div>Настройки</div></div>
         </div>
@@ -280,13 +327,13 @@ footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--line);color:v
 
     <li><div class="step">
       <h3>Дальше всё как на компьютере</h3>
-      <p><span class="ui">Инструменты</span> → <span class="ui">Ваши представители</span> → блок «Управляющие аккаунты» → <span class="ui">Добавить управляющий аккаунт</span> → логин <b>hdrgroup2026</b> → уровень <b>«Редактирование»</b> → <span class="ui">Добавить</span>.</p>
-      <p class="hint">Страница будет мелкой: её можно увеличить двумя пальцами. Удобнее повернуть телефон горизонтально. Схемы экранов для этих шагов есть на вкладке «С компьютера».</p>
+      <p>Выберите компанию → в левом меню <span class="ui">Доступы</span> → поле «Логин»: <b>hdrgroup2026</b> → тип доступа <b>«Представитель»</b> → <span class="ui">Добавить</span> → подтвердите.</p>
+      <p class="hint">Страницу можно увеличить двумя пальцами, удобнее держать телефон горизонтально. Схемы экранов для этих шагов есть на вкладке «С компьютера».</p>
     </div></li>
 
     <li><div class="step">
       <h3>Напишите нам «Готово»</h3>
-      <p>Мы примем приглашение, и доступ заработает.</p>
+      <p>Мы проверим доступ со своей стороны и сразу возьмёмся за работу.</p>
     </div></li>
   </ol>
   </div>
@@ -295,23 +342,23 @@ footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--line);color:v
 <section aria-labelledby="h-faq">
   <h2 id="h-faq">Если что-то не получается</h2>
   <div class="faq">
-    <details><summary>Нет кнопки «Добавить управляющий аккаунт»</summary><p>Скорее всего, вы вошли не под тем логином или у него нет прав на выдачу доступа. Добавлять управляющие аккаунты может владелец кабинета или главный представитель. Проверьте логин в правом верхнем углу и при необходимости войдите под другим.</p></details>
-    <details><summary>Нет пункта «Ваши представители»</summary><p>На телефоне это почти всегда значит, что не включена «Версия для ПК». Включите её и обновите страницу. На компьютере попробуйте поискать раздел в меню под вашим логином в правом верхнем углу.</p></details>
+    <details><summary>Нет раздела «Доступы»</summary><p>Раздел видит только владелец компании. Проверьте, под каким логином вы вошли: в списке «Организации» напротив компании должна стоять роль «Владелец». Если там «Представитель», попросите владельца выдать доступ или войдите под его логином.</p></details>
+    <details><summary>У компании нет владельца или права не подтверждены</summary><p>Сначала подтвердите права на компанию в Яндекс Бизнесе: после этого вы станете владельцем, и раздел «Доступы» появится. Если не получается подтвердить, напишите менеджеру, мы поможем пройти этот шаг.</p></details>
+    <details><summary>Компании нет в списке «Организации»</summary><p>Скорее всего, она привязана к другому логину Яндекса. Выйдите и войдите под тем логином, на котором регистрировали компанию.</p></details>
     <details><summary>Ошибка при вводе логина</summary><p>Попробуйте другой формат: <b>hdrgroup2026</b> или <b>hdrgroup2026@yandex.ru</b>. Проверьте, что в начале и в конце нет пробелов. Удобнее всего скопировать логин кнопкой вверху страницы.</p></details>
-    <details><summary>Пишет, что достигнут лимит</summary><p>К одному кабинету можно подключить не больше 20 управляющих аккаунтов. Удалите старые доступы, например бывших подрядчиков: в строке нажмите «⋯» → «Удалить».</p></details>
-    <details><summary>Открывается приложение вместо сайта</summary><p>Наберите адрес вручную в адресной строке браузера, а не переходите по ссылке. Если не помогает, временно откройте сайт в другом браузере.</p></details>
+    <details><summary>У меня сеть филиалов</summary><p>Выдайте доступ на уровне сети: выберите сеть в списке «Организации» и добавьте нас в её разделе «Доступы». Так мы получим доступ ко всем филиалам сразу.</p></details>
   </div>
 </section>
 
 <section aria-labelledby="h-off">
   <h2 id="h-off">Как отключить доступ</h2>
-  <p style="max-width:65ch">Откройте <span class="ui">Инструменты</span> → <span class="ui">Ваши представители</span>, в блоке «Управляющие аккаунты» нажмите <span class="ui">⋯</span> рядом с нашим логином и выберите «Удалить». Доступ пропадёт сразу.</p>
+  <p style="max-width:65ch">Откройте <span class="ui">Организации</span> → выберите компанию → <span class="ui">Доступы</span>. Найдите карточку с логином hdrgroup2026, нажмите значок удаления над её фото и подтвердите. Доступ пропадёт сразу.</p>
   <div class="note ok"><b>Не получилось за 5 минут?</b>Пришлите скриншот экрана вашему менеджеру. Подскажем, куда нажать, или созвонимся и пройдём шаги вместе с демонстрацией экрана.</div>
 </section>
 
 <footer>
-  <span>HDR Group · инструкция по выдаче доступа к Яндекс Директу</span>
-  <span>Названия разделов соответствуют интерфейсу Директа на октябрь 2026 года.</span>
+  <span>HDR Group · инструкция по выдаче доступа к Яндекс Бизнесу</span>
+  <span>Названия разделов соответствуют справке Яндекс Бизнеса на октябрь 2026 года.</span>
 </footer>
 
 </div>
